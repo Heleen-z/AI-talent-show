@@ -1,0 +1,235 @@
+Viva Engage 文本采集与 SharePoint 存储
+第一阶段测试用例
+
+文档版本：1.0
+测试范围：Fight for Agentic 社区 → Power Automate → SharePoint EngageMessages
+测试前缀：[QA-ENGAGE-20260920]
+
+一、通用核对规则
+
+1. Viva Engage 的原生消息唯一标识是 MessageId。
+2. SharePoint 业务去重键是 MessageKey，规则如下：
+   MessageKey = NetworkId:MessageId
+3. SharePoint 的系统 ID 只代表列表行，不等于 Viva Engage 的 MessageId。
+4. 每次测试运行完成后，核对以下字段：
+   Title、MessageKey、MessageId、SenderId、SenderName、ContentText、PostedAt、
+   FirstCapturedAt、LastSeenAt。
+5. 重复运行流程不能创建重复行；但正文相同、实际属于两次独立发布的消息，必须各自保存为一行。
+
+二、测试用例
+
+TC01：普通中文文本
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC01-中文]
+这是第一条中文文本采集测试。
+目标：验证中文正文、标题、作者和时间可以正确写入 SharePoint。
+
+预期结果：
+- SharePoint 新增 1 行。
+- ContentText 与原帖中文完全一致。
+- Title 为正文前 80 个字符。
+- MessageId 和 MessageKey 均不为空。
+- MessageKey 格式为 NetworkId:MessageId。
+- GroupName 为 Fight For Agentic。
+- SenderId 不为空；若本次响应提供作者引用，SenderName 应为发帖人显示名称。
+
+------------------------------------------------------------
+
+TC02：中英文混合、数字和常见符号
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC02-Mixed]
+English + 中文 + 1234567890.
+Version: v1.0.0; Status: PASS/FAIL; Cost: ¥99.50; Rate: 95%.
+
+预期结果：
+- SharePoint 新增 1 行。
+- 中英文、数字、.、+、;、/、¥、% 原样保存。
+- 不出现乱码、意外截断或 HTML 转义残留。
+- MessageKey 与 TC01 不同。
+
+------------------------------------------------------------
+
+TC03：换行和段落
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC03-Newlines]
+第一段：这是第一段文本。
+
+第二段：中间有一个空行。
+
+第三段：
+- 第一项
+- 第二项
+- 第三项
+
+预期结果：
+- SharePoint 新增 1 行。
+- ContentText 保留段落换行及中间空行。
+- 打开 SharePoint 项目详情后可见完整正文。
+- Title 只保留正文前 80 个字符属于正常结果。
+
+------------------------------------------------------------
+
+TC04：特殊字符、表情和技术文本
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC04-Special]
+特殊字符测试：<tag> & "quotes" 'single quotes' #hashtag @mention
+表情测试：😀 🚀 🎉 ✅ ❌ 👍
+代码测试：{"status":"ok","count":2}
+
+预期结果：
+- SharePoint 新增 1 行。
+- 表情、单双引号、尖括号、&、#、花括号等字符正常保存。
+- 流程不得因正文中的引号、& 或 JSON 样式文本失败。
+- ContentText 不应出现大量 &amp;、&lt;、&gt; 等意外编码文本。
+
+------------------------------------------------------------
+
+TC05：超长文本
+
+在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：
+
+[QA-ENGAGE-20260920][TC05-LongText]
+这是超长文本测试的开始。
+
+长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。
+
+在正文末尾追加：
+
+[TC05-END] 这是超长文本的结尾标记。
+
+预期结果：
+- SharePoint 新增 1 行。
+- Title 只保存前 80 个字符是正常现象。
+- ContentText 必须同时包含开头和 [TC05-END] 结尾标记。
+- 如果结尾缺失、SharePoint 截断或流程失败，记录为“正文长度处理失败”。
+
+------------------------------------------------------------
+
+TC06：空白行和近似空正文
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC06-Whitespace]
+
+
+这行上方有两个空行。
+
+这行下方也应保留换行。
+
+
+预期结果：
+- SharePoint 新增 1 行。
+- ContentText 不为空。
+- 多个连续换行不得导致流程失败。
+- Title 不应变成 SharePoint ID 或空值，因为该消息实际包含正文。
+
+------------------------------------------------------------
+
+TC07：正文完全相同的重复发布
+
+第一次发布：
+
+[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。
+
+运行流程并确认入库后，再发布完全相同的内容：
+
+[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。
+
+再次运行流程。
+
+预期结果：
+- SharePoint 应新增 2 行，而不是 1 行。
+- 两行 ContentText 可以完全相同。
+- 两行 MessageId 必须不同。
+- 两行 MessageKey 必须不同。
+- 此测试验证去重按 MessageKey，而不是按正文内容。
+
+------------------------------------------------------------
+
+TC08：不发布新帖，直接重复运行流程
+
+操作：
+1. 不发布任何新的 Viva Engage 消息。
+2. 手动运行流程。
+3. 再运行一次流程。
+
+预期结果：
+- EngageMessages 总行数不增加。
+- 每条已有测试消息的 SharePoint ID 不变。
+- MessageId 和 MessageKey 不变。
+- FirstCapturedAt 不变。
+- LastSeenAt 更新为最近一次扫描时间。
+- 不生成重复消息。
+
+------------------------------------------------------------
+
+TC09：编辑已发布帖子
+
+操作：
+1. 找到 TC01 的 Viva Engage 帖子。
+2. 编辑正文，追加：
+
+[TC09-EDITED] 此消息已被编辑。
+
+3. 重新运行流程。
+
+预期结果：
+- SharePoint 中该消息仍只有 1 行。
+- MessageId 和 MessageKey 不变。
+- ContentText 出现 [TC09-EDITED] 此消息已被编辑。
+- LastSeenAt 更新。
+- 当前流程尚未加入“新旧正文比较后更新 TextChangedAt”的条件，因此 TextChangedAt 目前保持旧值或为空不视为失败。
+
+------------------------------------------------------------
+
+TC10：回复测试
+
+操作：
+在 TC01 或任意测试主帖下发布回复：
+
+[QA-ENGAGE-20260920][TC10-Reply]
+这是对测试主帖的回复，用于验证 ThreadId 和 ReplyToId。
+
+运行流程。
+
+预期结果（完整讨论串抓取能力验证）：
+- SharePoint 新增回复对应的一行。
+- 回复的 MessageId 和 MessageKey 均应为新值。
+- 回复与主帖应具有相同 ThreadId。
+- IsRootPost 应为 否 / false。
+- ReplyToId 应为被直接回复消息的 ID。
+- ContentText 应为回复正文。
+
+若没有采集到回复：
+- 记录为“当前版本未验证完整回复抓取”。
+- 这说明仅使用“获取组中的消息 (V3)”可能未返回完整讨论串。
+- 后续应实施“按 ThreadId 使用 获取讨论串中的消息 (V3) 逐串补全”的设计。
+
+三、测试记录模板
+
+用例 | 发布成功 | 流程成功 | SharePoint 行数变化 | MessageKey 正确 | 正文正确 | SenderName 正确 | 备注
+TC01 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 |
+TC02 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 |
+TC03 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 |
+TC04 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 |
+TC05 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 | 是否保留 [TC05-END]
+TC06 | 是/否 | 是/否 | +1 | 是/否 | 是/否 | 是/否 | 换行是否保留
+TC07 | 是/否 | 是/否 | +2 | 是/否 | 是/否 | 是/否 | 正文相同但键不同
+TC08 | 不适用 | 是/否 | +0 | 是/否 | 是/否 | 是/否 | FirstCapturedAt 不变
+TC09 | 不适用 | 是/否 | +0 | 是/否 | 是/否 | 是/否 | 编辑后正文更新
+TC10 | 是/否 | 是/否 | +1 或待验证 | 是/否 | 是/否 | 是/否 | ThreadId / ReplyToId
+
+四、建议执行顺序
+
+TC01 → TC02 → TC03 → TC04 → TC05 → TC06 → TC07 → TC08 → TC09 → TC10
+
