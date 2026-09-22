@@ -1,0 +1,6 @@
+# 员工数据与运行产物不入库（agent.md 治理要求）
+data/
+poc_output/
+tools/*.json
+__pycache__/
+*.pyc
