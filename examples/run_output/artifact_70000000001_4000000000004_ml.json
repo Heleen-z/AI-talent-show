@@ -1,0 +1,113 @@
+{
+  "message_key": "70000000001:4000000000004",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000004",
+    "content_hash": "sha256:5d94b179ac2e5063",
+    "normalized_text": "9/18 test",
+    "model_input_text": "9/18 test",
+    "language": "en",
+    "text_stats": {
+      "characters": 9,
+      "words": 3,
+      "paragraphs": 1,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000004",
+    "summary": "9/18 test",
+    "intent": "social",
+    "key_points": [
+      "9/18 test"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "9/18 test",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "en",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000004",
+    "contribution_type": "social",
+    "type_confidence": 0.782,
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "9/18 test",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=9, paragraphs=1"
+      },
+      "value": {
+        "level": 0,
+        "evidence": [
+          {
+            "quote": "9/18 test",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 0.2→L0；特征: characters=9, paragraphs=1"
+      },
+      "evidence": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "9/18 test",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.1→L1；特征: characters=9, paragraphs=1"
+      },
+      "discussion_impact": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "9/18 test",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.0→L1；特征: characters=9, paragraphs=1"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "sklearn-v0.1",
+    "prompt_version": "weaklabels:rules:scoring-rules-0.1",
+    "_content_hash": "sha256:5d94b179ac2e5063",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000004",
+    "sender_id": "9000000000001",
+    "contribution_type": "social",
+    "dimension_total": 4,
+    "raw_points": 0,
+    "points": 0,
+    "duplicate_flag": true,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

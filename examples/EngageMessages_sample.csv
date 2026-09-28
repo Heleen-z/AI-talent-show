@@ -1,0 +1,63 @@
+﻿Title,MessageKey,MessageId,NetworkId,GroupId,GroupName,ThreadId,IsRootPost,SenderId,SenderName,PostedAt,PublishedAt,LanguageCode,SourceUrl,Privacy,MessageType,IsSystemMessage,FirstCapturedAt,LastSeenAt,LastRunId,ContentText,TextChangedAt,ReplyToId
+9/18 test,70000000001:4000000000001,4000000000001,70000000001,70000000002,Fight For Agentic,4000000000001,True,9000000000001,服务账号,9/18/2026,9/18/2026,en,https://engage.example.invalid/threads/4000000000001,private,update,False,9/20/2026,9/22/2026,example-run-20260922,9/18 test,,
+2026年9月17日，Hello World!,70000000001:4000000000002,4000000000002,70000000001,70000000002,Fight For Agentic,4000000000002,True,9000000000001,服务账号,9/17/2026,9/17/2026,zh-Hans,https://engage.example.invalid/threads/4000000000002,private,update,False,9/20/2026,9/22/2026,example-run-20260922,2026年9月17日，Hello World!,,
+Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业,70000000001:4000000000003,4000000000003,70000000001,70000000002,Fight For Agentic,4000000000003,True,9000000000002,员工B,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000003,private,update,False,9/20/2026,9/22/2026,example-run-20260922,Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有化的大模型,,
+9/18 test,70000000001:4000000000004,4000000000004,70000000001,70000000002,Fight For Agentic,4000000000004,True,9000000000001,服务账号,9/20/2026,9/20/2026,en,https://engage.example.invalid/threads/4000000000004,private,update,False,9/20/2026,9/22/2026,example-run-20260922,9/18 test,,
+"[QA-ENGAGE-20260920][TC10-Reply]
+这是对测试主帖的回复，用于验证 ThreadId 和 ReplyToId。",70000000001:4000000000005,4000000000005,70000000001,70000000002,Fight For Agentic,4000000000004,False,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000005,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC10-Reply]
+这是对测试主帖的回复，用于验证 ThreadId 和 ReplyToId。",,4000000000004
+"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",70000000001:4000000000006,4000000000006,70000000001,70000000002,Fight For Agentic,4000000000006,True,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000006,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",,
+"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",70000000001:4000000000007,4000000000007,70000000001,70000000002,Fight For Agentic,4000000000007,True,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000007,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",,
+"TC06：空白行和近似空正文
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC06-Whitespace]
+
+这行上方有两",70000000001:4000000000008,4000000000008,70000000001,70000000002,Fight For Agentic,4000000000008,True,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000008,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"TC06：空白行和近似空正文
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC06-Whitespace]
+
+这行上方有两个空行。
+
+这行下方也应保留换行。",,
+"TC05：超长文本
+
+在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：
+
+[QA-E",70000000001:4000000000009,4000000000009,70000000001,70000000002,Fight For Agentic,4000000000009,True,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000009,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"TC05：超长文本
+
+在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：
+
+[QA-ENGAGE-20260920][TC05-LongText]
+这是超长文本测试的开始。
+
+长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。
+长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。
+
+在正文末尾追加：
+
+[TC05-END] 这是超长文本的结尾标记。",,
+"[QA-ENGAGE-20260920][TC04-Special]
+特殊字符测试：<tag> & ""quotes"" 'single quotes' #hash",70000000001:4000000000010,4000000000010,70000000001,70000000002,Fight For Agentic,4000000000010,True,9000000000001,服务账号,9/20/2026,9/20/2026,en,https://engage.example.invalid/threads/4000000000010,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC04-Special]
+特殊字符测试：<tag> & ""quotes"" 'single quotes' #hashtag @mention
+表情测试：😀 🚀 🎉 ✅ ❌ 👍
+代码测试：{""status"":""ok"",""count"":2}",,
+"[QA-ENGAGE-20260920][TC03-Newlines]
+第一段：这是第一段文本。
+
+第二段：中间有一个空行。",70000000001:4000000000011,4000000000011,70000000001,70000000002,Fight For Agentic,4000000000011,True,9000000000001,服务账号,9/20/2026,9/20/2026,zh-Hans,https://engage.example.invalid/threads/4000000000011,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC03-Newlines]
+第一段：这是第一段文本。
+
+第二段：中间有一个空行。",,
+"[QA-ENGAGE-20260920][TC02-Mixed]
+English + 中文 + 1234567890.
+Version: v1.0.0; Sta",70000000001:4000000000012,4000000000012,70000000001,70000000002,Fight For Agentic,4000000000012,True,9000000000001,服务账号,9/20/2026,9/20/2026,en,https://engage.example.invalid/threads/4000000000012,private,update,False,9/20/2026,9/22/2026,example-run-20260922,"[QA-ENGAGE-20260920][TC02-Mixed]
+English + 中文 + 1234567890.
+Version: v1.0.0; Status: PASS/FAIL; Cost: ¥99.50; Rate: 95%.",,

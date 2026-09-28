@@ -1,0 +1,118 @@
+{
+  "message_key": "70000000001:4000000000011",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000011",
+    "content_hash": "sha256:4f2351df01140c08",
+    "normalized_text": "[QA-ENGAGE-20260920][TC03-Newlines]\n第一段：这是第一段文本。\n\n第二段：中间有一个空行。",
+    "model_input_text": "[QA-ENGAGE-20260920][TC03-Newlines]\n第一段：这是第一段文本。\n\n第二段：中间有一个空行。",
+    "language": "zh-Hans",
+    "text_stats": {
+      "characters": 62,
+      "words": 25,
+      "paragraphs": 3,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000011",
+    "summary": "[QA-ENGAGE-20260920][TC03-Newlines]",
+    "intent": "practice_share",
+    "key_points": [
+      "[QA-ENGAGE-20260920][TC03-Newlines]",
+      "第一段：这是第一段文本。",
+      "第二段：中间有一个空行。"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "第一段：这是第一段文本。",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "第二段：中间有一个空行。",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "zh-Hans",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000011",
+    "contribution_type": "practice_share",
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC03-Newlines]",
+          "第一段：这是第一段文本。",
+          "第二段：中间有一个空行。"
+        ],
+        "reason": "主帖：发起新话题"
+      },
+      "value": {
+        "level": 1,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC03-Newlines]",
+          "第一段：这是第一段文本。",
+          "第二段：中间有一个空行。"
+        ],
+        "reason": "正文仅 62 字"
+      },
+      "evidence": {
+        "level": 2,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC03-Newlines]",
+          "第一段：这是第一段文本。",
+          "第二段：中间有一个空行。"
+        ],
+        "reason": "具体性信号 2/4（数字/步骤/链接/代码）"
+      },
+      "discussion_impact": {
+        "level": 1,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC03-Newlines]",
+          "第一段：这是第一段文本。",
+          "第二段：中间有一个空行。"
+        ],
+        "reason": "一般互动"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "baseline-rules-1.0",
+    "prompt_version": "baseline-rules-1.0",
+    "_content_hash": "sha256:4f2351df01140c08",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000011",
+    "sender_id": "9000000000001",
+    "contribution_type": "practice_share",
+    "dimension_total": 6,
+    "raw_points": 10,
+    "points": 10,
+    "duplicate_flag": false,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

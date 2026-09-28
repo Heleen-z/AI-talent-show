@@ -1,0 +1,115 @@
+{
+  "message_key": "70000000001:4000000000003",
+  "sender": "员工B",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000003",
+    "content_hash": "sha256:2f8533c7fe20758b",
+    "normalized_text": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有化的大模型",
+    "model_input_text": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有化的大模型",
+    "language": "zh-Hans",
+    "text_stats": {
+      "characters": 105,
+      "words": 74,
+      "paragraphs": 1,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000003",
+    "summary": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有化的大模型",
+    "intent": "practice_share",
+    "key_points": [
+      "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有"
+    ],
+    "actionable_advice": [
+      "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业数据和工作流程，所以我们应该进行训练私有"
+    ],
+    "evidence_spans": [
+      {
+        "quote": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "zh-Hans",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000003",
+    "contribution_type": "practice_share",
+    "type_confidence": 0.877,
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=105, paragraphs=1, has_practice_hint=1"
+      },
+      "value": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.9→L2；特征: characters=105, paragraphs=1, has_practice_hint=1"
+      },
+      "evidence": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.0→L1；特征: characters=105, paragraphs=1, has_practice_hint=1"
+      },
+      "discussion_impact": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=105, paragraphs=1, has_practice_hint=1"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "sklearn-v0.1",
+    "prompt_version": "weaklabels:rules:scoring-rules-0.1",
+    "_content_hash": "sha256:2f8533c7fe20758b",
+    "_sender_id": "9000000000002"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000003",
+    "sender_id": "9000000000002",
+    "contribution_type": "practice_share",
+    "dimension_total": 7,
+    "raw_points": 10,
+    "points": 10,
+    "duplicate_flag": false,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

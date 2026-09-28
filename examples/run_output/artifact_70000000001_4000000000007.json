@@ -1,0 +1,115 @@
+{
+  "message_key": "70000000001:4000000000007",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000007",
+    "content_hash": "sha256:5b708e3bb94a2bf8",
+    "normalized_text": "[QA-ENGAGE-20260920][TC07-Duplicate]\n这是完全相同正文的第一次发布。",
+    "model_input_text": "[QA-ENGAGE-20260920][TC07-Duplicate]\n这是完全相同正文的第一次发布。",
+    "language": "en",
+    "text_stats": {
+      "characters": 52,
+      "words": 19,
+      "paragraphs": 2,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [
+      "LANGUAGE_CONFLICT detected=en hint=zh-Hans"
+    ],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000007",
+    "summary": "[QA-ENGAGE-20260920][TC07-Duplicate]",
+    "intent": "practice_share",
+    "key_points": [
+      "[QA-ENGAGE-20260920][TC07-Duplicate]",
+      "这是完全相同正文的第一次发布。"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "[QA-ENGAGE-20260920][TC07-Duplicate]",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "这是完全相同正文的第一次发布。",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [
+      "LANGUAGE_CONFLICT detected=en hint=zh-Hans"
+    ],
+    "language": "en",
+    "summary_quality": "review",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000007",
+    "contribution_type": "practice_share",
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC07-Duplicate]",
+          "这是完全相同正文的第一次发布。"
+        ],
+        "reason": "主帖：发起新话题"
+      },
+      "value": {
+        "level": 1,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC07-Duplicate]",
+          "这是完全相同正文的第一次发布。"
+        ],
+        "reason": "正文仅 52 字"
+      },
+      "evidence": {
+        "level": 2,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC07-Duplicate]",
+          "这是完全相同正文的第一次发布。"
+        ],
+        "reason": "具体性信号 2/4（数字/步骤/链接/代码）"
+      },
+      "discussion_impact": {
+        "level": 1,
+        "evidence": [
+          "[QA-ENGAGE-20260920][TC07-Duplicate]",
+          "这是完全相同正文的第一次发布。"
+        ],
+        "reason": "一般互动"
+      }
+    },
+    "quality_flags": [
+      "LANGUAGE_CONFLICT detected=en hint=zh-Hans"
+    ],
+    "needs_human_review": true,
+    "review_reason": "摘要质量检查未通过",
+    "score_model_version": "baseline-rules-1.0",
+    "prompt_version": "baseline-rules-1.0",
+    "_content_hash": "sha256:5b708e3bb94a2bf8",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000007",
+    "sender_id": "9000000000001",
+    "contribution_type": "practice_share",
+    "dimension_total": 6,
+    "raw_points": 0,
+    "points": 0,
+    "duplicate_flag": true,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "message_key": "70000000001:4000000000010",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000010",
+    "content_hash": "sha256:79e7f1d335e6845f",
+    "normalized_text": "[QA-ENGAGE-20260920][TC04-Special]\n特殊字符测试：<tag> & \"quotes\" 'single quotes' #hashtag @mention\n表情测试：😀 🚀 🎉 ✅ ❌ 👍\n代码测试：{\"status\":\"ok\",\"count\":2}",
+    "model_input_text": "[QA-ENGAGE-20260920][TC04-Special]\n特殊字符测试：<tag> & \"quotes\" 'single quotes' [HASHTAG] [MENTION]\n表情测试：😀 🚀 🎉 ✅ ❌ 👍\n代码测试：{\"status\":\"ok\",\"count\":2}",
+    "language": "en",
+    "text_stats": {
+      "characters": 140,
+      "words": 29,
+      "paragraphs": 4,
+      "urls": 0,
+      "mentions": 1,
+      "hashtags": 1,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000010",
+    "summary": "代码测试：{\"status\":\"ok\",\"count\":2}",
+    "intent": "practice_share",
+    "key_points": [
+      "代码测试：{\"status\":\"ok\",\"count\":2}",
+      "[QA-ENGAGE-20260920][TC04-Special]",
+      "特殊字符测试：<tag> & \"quotes\" 'single quotes' #hashtag @mention"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "代码测试：{\"status\":\"ok\",\"count\":2}",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "[QA-ENGAGE-20260920][TC04-Special]",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "特殊字符测试：<tag> & \"quotes\" 'single quotes' #hashtag @mention",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "en",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000010",
+    "contribution_type": "practice_share",
+    "type_confidence": 0.93,
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "代码测试：{\"status\":\"ok\",\"count\":2}",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=140, paragraphs=4"
+      },
+      "value": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "代码测试：{\"status\":\"ok\",\"count\":2}",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=140, paragraphs=4"
+      },
+      "evidence": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "代码测试：{\"status\":\"ok\",\"count\":2}",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.0→L1；特征: characters=140, paragraphs=4"
+      },
+      "discussion_impact": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "代码测试：{\"status\":\"ok\",\"count\":2}",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=140, paragraphs=4"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "sklearn-v0.1",
+    "prompt_version": "weaklabels:rules:scoring-rules-0.1",
+    "_content_hash": "sha256:79e7f1d335e6845f",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000010",
+    "sender_id": "9000000000001",
+    "contribution_type": "practice_share",
+    "dimension_total": 7,
+    "raw_points": 10,
+    "points": 10,
+    "duplicate_flag": false,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

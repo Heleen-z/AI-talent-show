@@ -1,0 +1,123 @@
+{
+  "message_key": "70000000001:4000000000011",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000011",
+    "content_hash": "sha256:4f2351df01140c08",
+    "normalized_text": "[QA-ENGAGE-20260920][TC03-Newlines]\n第一段：这是第一段文本。\n\n第二段：中间有一个空行。",
+    "model_input_text": "[QA-ENGAGE-20260920][TC03-Newlines]\n第一段：这是第一段文本。\n\n第二段：中间有一个空行。",
+    "language": "zh-Hans",
+    "text_stats": {
+      "characters": 62,
+      "words": 25,
+      "paragraphs": 3,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000011",
+    "summary": "[QA-ENGAGE-20260920][TC03-Newlines]",
+    "intent": "practice_share",
+    "key_points": [
+      "[QA-ENGAGE-20260920][TC03-Newlines]",
+      "第一段：这是第一段文本。",
+      "第二段：中间有一个空行。"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "第一段：这是第一段文本。",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "第二段：中间有一个空行。",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "zh-Hans",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000011",
+    "contribution_type": "practice_share",
+    "type_confidence": 0.706,
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 2.0→L2；特征: characters=62, paragraphs=3"
+      },
+      "value": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.0→L1；特征: characters=62, paragraphs=3"
+      },
+      "evidence": {
+        "level": 2,
+        "evidence": [
+          {
+            "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.7→L2；特征: characters=62, paragraphs=3"
+      },
+      "discussion_impact": {
+        "level": 1,
+        "evidence": [
+          {
+            "quote": "[QA-ENGAGE-20260920][TC03-Newlines]",
+            "reason": "TF-IDF 主题句"
+          }
+        ],
+        "reason": "Ridge 预测 1.1→L1；特征: characters=62, paragraphs=3"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "sklearn-v0.1",
+    "prompt_version": "weaklabels:rules:scoring-rules-0.1",
+    "_content_hash": "sha256:4f2351df01140c08",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000011",
+    "sender_id": "9000000000001",
+    "contribution_type": "practice_share",
+    "dimension_total": 6,
+    "raw_points": 10,
+    "points": 10,
+    "duplicate_flag": false,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}

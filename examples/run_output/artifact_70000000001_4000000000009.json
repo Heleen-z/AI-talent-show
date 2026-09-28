@@ -1,0 +1,118 @@
+{
+  "message_key": "70000000001:4000000000009",
+  "sender": "服务账号",
+  "is_root": true,
+  "posted_at": "9/20/2026",
+  "preprocess": {
+    "message_key": "70000000001:4000000000009",
+    "content_hash": "sha256:6ea5de3c407b3d86",
+    "normalized_text": "TC05：超长文本\n\n在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：\n\n[QA-ENGAGE-20260920][TC05-LongText]\n这是超长文本测试的开始。\n\n长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。\n长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。\n\n在正文末尾追加：\n\n[TC05-END] 这是超长文本的结尾标记。",
+    "model_input_text": "TC05：超长文本\n\n在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：\n\n[QA-ENGAGE-20260920][TC05-LongText]\n这是超长文本测试的开始。\n\n长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。\n长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。该测试用于确认正文不会被默认 Title 列长度、单行文本限制或工作流表达式截断。\n\n在正文末尾追加：\n\n[TC05-END] 这是超长文本的结尾标记。",
+    "language": "zh-Hans",
+    "text_stats": {
+      "characters": 1905,
+      "words": 1085,
+      "paragraphs": 8,
+      "urls": 0,
+      "mentions": 0,
+      "hashtags": 0,
+      "code_blocks": 0
+    },
+    "redaction": {
+      "applied": false,
+      "items": []
+    },
+    "warnings": [],
+    "preprocess_version": "preprocess-1.0"
+  },
+  "summary": {
+    "message_key": "70000000001:4000000000009",
+    "summary": "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+    "intent": "practice_share",
+    "key_points": [
+      "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+      "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+      "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。"
+    ],
+    "actionable_advice": [],
+    "evidence_spans": [
+      {
+        "quote": "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+        "reason": "TF-IDF 主题句"
+      },
+      {
+        "quote": "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+        "reason": "TF-IDF 主题句"
+      }
+    ],
+    "uncertainties": [],
+    "language": "zh-Hans",
+    "summary_quality": "pass",
+    "model_version": "baseline-extractive-1.0",
+    "prompt_version": "baseline-extractive-1.0"
+  },
+  "evaluation": {
+    "message_key": "70000000001:4000000000009",
+    "contribution_type": "practice_share",
+    "dimensions": {
+      "relevance": {
+        "level": 2,
+        "evidence": [
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。"
+        ],
+        "reason": "主帖：发起新话题"
+      },
+      "value": {
+        "level": 3,
+        "evidence": [
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。"
+        ],
+        "reason": "正文 1905 字、0 个代码块，含可复用内容"
+      },
+      "evidence": {
+        "level": 1,
+        "evidence": [
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。"
+        ],
+        "reason": "具体性信号 1/4（数字/步骤/链接/代码）"
+      },
+      "discussion_impact": {
+        "level": 2,
+        "evidence": [
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。",
+          "长文本内容：Power Automate 应完整保留 Viva Engage 的纯文本正文，并写入 SharePoint 的多行文本列。"
+        ],
+        "reason": "发起了有信息量的讨论内容"
+      }
+    },
+    "quality_flags": [],
+    "needs_human_review": false,
+    "review_reason": null,
+    "score_model_version": "baseline-rules-1.0",
+    "prompt_version": "baseline-rules-1.0",
+    "_content_hash": "sha256:6ea5de3c407b3d86",
+    "_sender_id": "9000000000001"
+  },
+  "points": {
+    "message_key": "70000000001:4000000000009",
+    "sender_id": "9000000000001",
+    "contribution_type": "practice_share",
+    "dimension_total": 8,
+    "raw_points": 10,
+    "points": 10,
+    "duplicate_flag": false,
+    "rules_version": "scoring-rules-0.1",
+    "per_item_cap": 10
+  }
+}
