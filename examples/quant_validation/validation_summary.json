@@ -1,0 +1,38 @@
+{
+  "groups": {
+    "existing_anonymized_capture": {
+      "n": 12,
+      "old_total": 71,
+      "candidate_total": 15,
+      "released_total": 0,
+      "type_changed": 7,
+      "duplicates": 4,
+      "old_at_cap": 6,
+      "new_at_cap": 0,
+      "gate_pass": 12
+    },
+    "synthetic_forvia_v1": {
+      "n": 50,
+      "old_total": 394,
+      "candidate_total": 137,
+      "released_total": 0,
+      "type_changed": 22,
+      "duplicates": 2,
+      "old_at_cap": 20,
+      "new_at_cap": 0,
+      "gate_pass": 50
+    }
+  },
+  "author_design_agreement": {
+    "old": 29,
+    "alpha": 33
+  },
+  "author_design_n": 50,
+  "old_12_total_matches_saved": true,
+  "python": "3.12.9",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "inference": "descriptive_only_no_p_values_no_human_gold",
+  "calibration": "same_62_records_exploratory_not_holdout"
+}

@@ -1,0 +1,18 @@
+{
+  "original_rows": 12,
+  "new_synthetic_rows": 50,
+  "merged_rows": 62,
+  "synthetic_roots": 27,
+  "synthetic_replies": 23,
+  "synthetic_authors": 12,
+  "original_fields_preserved": true,
+  "all_thread_references_resolve": true,
+  "author_designed_intents": {
+    "question": 7,
+    "answer": 17,
+    "practice_share": 16,
+    "social": 3,
+    "retrospective": 3,
+    "resource": 4
+  }
+}

@@ -1,5 +1,11 @@
 # 示例数据集（匿名化）
 
+新增素材见 [FORVIA模拟素材与合并验证集](forvia_materials/README.md)：50条模拟消息与本目录12条样例合并为62条，附阅读版、来源标识和作者设计的验证重点。
+
+量化评分卡的新实跑结果见 [quant_validation](quant_validation/README.md)，完整效果报告与流程图见 [PART2_SCORECARD_VALIDATION.md](../PART2_SCORECARD_VALIDATION.md)。
+
+全部62条正文的轻量TF-IDF＋Ridge候选分及其特征贡献见 [PART2_SIMPLE_MODEL_ALL_MESSAGES.md](../PART2_SIMPLE_MODEL_ALL_MESSAGES.md)，机器可读结果在 [simple_score_results](simple_score_results/)。
+
 本目录是一套可入库的示例数据，用于在不接 SharePoint 的情况下演示/验证 PART2 评分流水线（`poc/`）。
 
 ## 内容

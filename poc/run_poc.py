@@ -32,13 +32,20 @@ def load_rows(path: Path) -> list[dict]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("csv", nargs="?", default=str(DEFAULT_CSV))
-    parser.add_argument("--model", choices=["rules", "ml"], default="rules")
+    parser.add_argument("--model", choices=["rules", "ml", "scorecard"], default="rules")
+    parser.add_argument('--out', type=Path, default=OUT_DIR)
+    parser.add_argument('--card', type=Path, help='Frozen scorecard JSON; required for scorecard backend')
     args = parser.parse_args()
 
     rows = load_rows(Path(args.csv))
     print(f"输入 {Path(args.csv).name}：{len(rows)} 条消息，评分后端 = {args.model}")
 
     evaluate = None
+    if args.model == 'scorecard':
+        from .scorecard import ScorecardBackend
+        if not args.card:
+            parser.error('--model scorecard requires --card (no silent fit on evaluation data)')
+        evaluate = ScorecardBackend.load(args.card, rows).evaluate
     if args.model == "ml":
         from .ml_model import SklearnBackend
 
@@ -48,15 +55,15 @@ def main() -> None:
               f"训练时间: {backend.bundle['trained_at']})")
         evaluate = backend.evaluate
 
-    results = run_pipeline(rows, evaluate=evaluate)
+    results = run_pipeline(rows, evaluate=evaluate, review_hold=True)
 
-    OUT_DIR.mkdir(exist_ok=True)
-    table_path = OUT_DIR / f"summary_table_{args.model}.csv"
+    args.out.mkdir(parents=True, exist_ok=True)
+    table_path = args.out / f"summary_table_{args.model}.csv"
     with open(table_path, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
         w.writerow(["MessageKey", "Sender", "IsRoot", "PostedAt", "Intent", "Conf",
                     "维度分(relevance/value/evidence/impact)", "总分", "积分",
-                    "重复", "需复核", "门禁"])
+                    "重复", "需复核", "门禁", "候选积分", "状态", "数据来源"])
         for r in results:
             d = r["evaluation"]["dimensions"]
             w.writerow([
@@ -70,16 +77,17 @@ def main() -> None:
                 "Y" if r["evaluation"]["needs_human_review"] else "",
                 "PASS" if not r["points"].get("gate_failures")
                 else ";".join(r["points"]["gate_failures"]),
+                r['points']['candidate_points'], r['points']['scoring_status'], r['data_origin'],
             ])
 
     suffix = "" if args.model == "rules" else f"_{args.model}"
     for r in results:
         safe = r["message_key"].replace(":", "_")
-        with open(OUT_DIR / f"artifact_{safe}{suffix}.json", "w", encoding="utf-8") as f:
+        with open(args.out / f"artifact_{safe}{suffix}.json", "w", encoding="utf-8") as f:
             json.dump(r, f, ensure_ascii=False, indent=2)
 
     # ---- 控制台报告 ----
-    print(f"\n逐条结果（完整产物在 {OUT_DIR}\\）")
+    print(f"\n逐条结果（完整产物在 {args.out}\\）")
     print(f"{'MessageKey':<28}{'类型':<16}{'维r/v/e/i':<10}{'积分':<5}{'备注'}")
     for r in results:
         d = r["evaluation"]["dimensions"]
@@ -93,7 +101,8 @@ def main() -> None:
         if r["points"].get("gate_failures"):
             notes.append("门禁:" + ";".join(r["points"]["gate_failures"])[:40])
         conf = r["evaluation"].get("type_confidence")
-        conf_note = f" (p={conf:.2f})" if conf is not None and conf < 0.6 else ""
+        conf_label = 'rule' if r['evaluation'].get('confidence_kind') == 'heuristic_not_probability' else 'p'
+        conf_note = f" ({conf_label}={conf:.2f})" if conf is not None and conf < 0.6 else ""
         print(f"{r['message_key']:<28}{r['evaluation']['contribution_type'] + conf_note:<16}"
               f"{dims:<10}{r['points']['points']:<5}{','.join(notes)}")
 

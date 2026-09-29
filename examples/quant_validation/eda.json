@@ -1,0 +1,287 @@
+{
+  "all": {
+    "n": 62,
+    "metrics": {
+      "M1_characters": {
+        "min": 9.0,
+        "max": 1905.0,
+        "p25": 70.5,
+        "p60": 111.4,
+        "p90": 159.8,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M2_paragraphs": {
+        "min": 1.0,
+        "max": 8.0,
+        "p25": 1.0,
+        "p60": 1.0,
+        "p90": 2.0,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M3_chars_per_paragraph": {
+        "min": 9.0,
+        "max": 356.0,
+        "p25": 56.0,
+        "p60": 105.0,
+        "p90": 159.8,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M4_code_blocks": {
+        "min": 0.0,
+        "max": 0.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 62,
+        "degenerate": true
+      },
+      "M5_urls": {
+        "min": 0.0,
+        "max": 2.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 58,
+        "degenerate": false
+      },
+      "M6_numbers_per_100_chars": {
+        "min": 0.0,
+        "max": 22.22222222222222,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.9230769230769231,
+        "zero_count": 44,
+        "degenerate": false
+      },
+      "M7_steps": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 51,
+        "degenerate": false
+      },
+      "M8_questions": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 40,
+        "degenerate": false
+      },
+      "M9_thread_replies": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 43,
+        "degenerate": false
+      },
+      "M10_intent_hints": {
+        "min": 0.0,
+        "max": 2.0,
+        "p25": 0.0,
+        "p60": 1.0,
+        "p90": 2.0,
+        "zero_count": 26,
+        "degenerate": false
+      }
+    }
+  },
+  "origin:existing_anonymized_capture": {
+    "n": 12,
+    "metrics": {
+      "M1_characters": {
+        "min": 9.0,
+        "max": 1905.0,
+        "p25": 44.75,
+        "p60": 86.19999999999999,
+        "p90": 138.0,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M2_paragraphs": {
+        "min": 1.0,
+        "max": 8.0,
+        "p25": 1.0,
+        "p60": 2.5999999999999996,
+        "p90": 4.9,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M3_chars_per_paragraph": {
+        "min": 9.0,
+        "max": 238.125,
+        "p25": 20.35,
+        "p60": 31.4,
+        "p90": 98.50000000000003,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M4_code_blocks": {
+        "min": 0.0,
+        "max": 0.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 12,
+        "degenerate": true
+      },
+      "M5_urls": {
+        "min": 0.0,
+        "max": 0.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 12,
+        "degenerate": true
+      },
+      "M6_numbers_per_100_chars": {
+        "min": 0.26246719160104987,
+        "max": 22.22222222222222,
+        "p25": 1.329160530191458,
+        "p60": 1.9230769230769231,
+        "p90": 21.30434782608696,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M7_steps": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.9000000000000004,
+        "zero_count": 8,
+        "degenerate": false
+      },
+      "M8_questions": {
+        "min": 0.0,
+        "max": 0.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 12,
+        "degenerate": true
+      },
+      "M9_thread_replies": {
+        "min": 0.0,
+        "max": 1.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 11,
+        "degenerate": false
+      },
+      "M10_intent_hints": {
+        "min": 0.0,
+        "max": 2.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 8,
+        "degenerate": false
+      }
+    }
+  },
+  "origin:synthetic_forvia_v1": {
+    "n": 50,
+    "metrics": {
+      "M1_characters": {
+        "min": 16.0,
+        "max": 356.0,
+        "p25": 81.25,
+        "p60": 115.4,
+        "p90": 160.5,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M2_paragraphs": {
+        "min": 1.0,
+        "max": 1.0,
+        "p25": 1.0,
+        "p60": 1.0,
+        "p90": 1.0,
+        "zero_count": 0,
+        "degenerate": true
+      },
+      "M3_chars_per_paragraph": {
+        "min": 16.0,
+        "max": 356.0,
+        "p25": 81.25,
+        "p60": 115.4,
+        "p90": 160.5,
+        "zero_count": 0,
+        "degenerate": false
+      },
+      "M4_code_blocks": {
+        "min": 0.0,
+        "max": 0.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 50,
+        "degenerate": true
+      },
+      "M5_urls": {
+        "min": 0.0,
+        "max": 2.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.0,
+        "zero_count": 46,
+        "degenerate": false
+      },
+      "M6_numbers_per_100_chars": {
+        "min": 0.0,
+        "max": 4.958677685950414,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 0.5782296057525421,
+        "zero_count": 44,
+        "degenerate": false
+      },
+      "M7_steps": {
+        "min": 0.0,
+        "max": 1.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 43,
+        "degenerate": false
+      },
+      "M8_questions": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 1.0,
+        "p90": 2.0,
+        "zero_count": 28,
+        "degenerate": false
+      },
+      "M9_thread_replies": {
+        "min": 0.0,
+        "max": 3.0,
+        "p25": 0.0,
+        "p60": 0.0,
+        "p90": 1.0,
+        "zero_count": 32,
+        "degenerate": false
+      },
+      "M10_intent_hints": {
+        "min": 0.0,
+        "max": 2.0,
+        "p25": 0.0,
+        "p60": 1.0,
+        "p90": 2.0,
+        "zero_count": 18,
+        "degenerate": false
+      }
+    }
+  }
+}

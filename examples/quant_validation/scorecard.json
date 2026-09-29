@@ -1,0 +1,110 @@
+{
+  "version": "quantile-scorecard-0.2-alpha",
+  "status": "exploratory_not_validated",
+  "calibration_n": 62,
+  "calibration_digest": "01fbd2bb769a178ea9f8d10984e4f3507a9f5459127a92474ecdbcd4429fb9cd",
+  "metrics": {
+    "M1_characters": {
+      "cuts_log1p": [
+        4.269624768068084,
+        4.721911215353664,
+        5.08015434870804
+      ],
+      "degenerate": false
+    },
+    "M2_paragraphs": {
+      "cuts_log1p": [
+        0.6931471805599453,
+        0.6931471805599453,
+        1.0986122886681098
+      ],
+      "degenerate": false
+    },
+    "M3_chars_per_paragraph": {
+      "cuts_log1p": [
+        4.04305126783455,
+        4.663439094112067,
+        5.08015434870804
+      ],
+      "degenerate": false
+    },
+    "M4_code_blocks": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "degenerate": true
+    },
+    "M5_urls": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "degenerate": false
+    },
+    "M6_numbers_per_100_chars": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        1.0726368022648491
+      ],
+      "degenerate": false
+    },
+    "M7_steps": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        0.6931471805599453
+      ],
+      "degenerate": false
+    },
+    "M8_questions": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        0.6931471805599453
+      ],
+      "degenerate": false
+    },
+    "M9_thread_replies": {
+      "cuts_log1p": [
+        0.0,
+        0.0,
+        0.6931471805599453
+      ],
+      "degenerate": false
+    },
+    "M10_intent_hints": {
+      "cuts_log1p": [
+        0.0,
+        0.6931471805599453,
+        1.0986122886681098
+      ],
+      "degenerate": false
+    }
+  },
+  "dimension_metrics": {
+    "value": [
+      "M1_characters",
+      "M2_paragraphs",
+      "M3_chars_per_paragraph"
+    ],
+    "evidence": [
+      "M4_code_blocks",
+      "M5_urls",
+      "M6_numbers_per_100_chars"
+    ],
+    "discussion_impact": [
+      "M7_steps",
+      "M9_thread_replies"
+    ]
+  },
+  "normalization": "log1p; strict > quantile; equal cuts collapsed; zero maps to zero",
+  "weights": "equal within dimension; equal across four dimensions",
+  "origins": [
+    "existing_anonymized_capture",
+    "synthetic_forvia_v1"
+  ]
+}

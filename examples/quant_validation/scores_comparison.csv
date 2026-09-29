@@ -1,0 +1,82 @@
+﻿MessageKey,ScenarioId,Title,DataOrigin,Sender,OldType,NewType,relevance,value,evidence,discussion_impact,OldPoints,CandidatePoints,ReleasedPoints,Status,Duplicate,GatePass,ReviewReason
+70000000001:4000000000001,,9/18 test,existing_anonymized_capture,服务账号,social,practice_share,2,0,1,0,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000002,,2026年9月17日，Hello World!,existing_anonymized_capture,服务账号,social,social,0,0,0,0,5,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000003,,Open AI 推出面向法律工作的 Astra for law，将GPT-6 Astra 与法律检索、专业工作流程结合，先想部分律所开放，这显示竞争正延伸到行业,existing_anonymized_capture,员工B,practice_share,practice_share,2,1,1,1,10,4,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000004,,9/18 test,existing_anonymized_capture,服务账号,social,practice_share,2,0,1,1,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000005,,"[QA-ENGAGE-20260920][TC10-Reply]
+这是对测试主帖的回复，用于验证 ThreadId 和 ReplyToId。",existing_anonymized_capture,服务账号,social,answer,2,1,1,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000006,,"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",existing_anonymized_capture,服务账号,practice_share,social,0,0,0,0,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000007,,"[QA-ENGAGE-20260920][TC07-Duplicate]
+这是完全相同正文的第一次发布。",existing_anonymized_capture,服务账号,practice_share,social,0,0,0,0,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000008,,"TC06：空白行和近似空正文
+
+在 Viva Engage 发布：
+
+[QA-ENGAGE-20260920][TC06-Whitespace]
+
+这行上方有两",existing_anonymized_capture,服务账号,practice_share,social,0,0,0,0,10,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000009,,"TC05：超长文本
+
+在 Viva Engage 发布以下开头后，重复复制“长文本内容”段落，建议总长度达到 3,000 至 5,000 个字符：
+
+[QA-E",existing_anonymized_capture,服务账号,practice_share,practice_share,0,3,1,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000010,,"[QA-ENGAGE-20260920][TC04-Special]
+特殊字符测试：<tag> & ""quotes"" 'single quotes' #hash",existing_anonymized_capture,服务账号,practice_share,practice_share,0,1,1,0,10,2,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000011,,"[QA-ENGAGE-20260920][TC03-Newlines]
+第一段：这是第一段文本。
+
+第二段：中间有一个空行。",existing_anonymized_capture,服务账号,practice_share,social,0,0,0,0,10,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:4000000000012,,"[QA-ENGAGE-20260920][TC02-Mixed]
+English + 中文 + 1234567890.
+Version: v1.0.0; Sta",existing_anonymized_capture,服务账号,practice_share,practice_share,2,1,1,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000001,S01,座椅工艺文件检索：为什么搜到的是旧版本？,synthetic_forvia_v1,模拟员工01,question,question,2,1,0,1,9,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000002,S02,先确认适用范围,synthetic_forvia_v1,模拟员工02,social,answer,2,1,0,1,7,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000003,S03,补充一个版本冲突案例,synthetic_forvia_v1,模拟员工01,answer,question,2,1,1,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000004,S04,感谢分享,synthetic_forvia_v1,模拟员工03,social,social,0,0,0,0,6,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000005,S05,座椅面料外观检查：一次跨批次失败复盘,synthetic_forvia_v1,模拟员工04,practice_share,retrospective,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000006,S06,别把增强图片当独立样本,synthetic_forvia_v1,模拟员工05,answer,answer,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000007,S07,汽车需求工程 RAG：值得读的近期论文,synthetic_forvia_v1,模拟员工06,resource,resource,2,1,1,2,10,5,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000008,S08,中文提问能命中英文规范吗？,synthetic_forvia_v1,模拟员工07,question,question,2,1,0,0,7,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000009,S09,保留标识符，再做检索对照,synthetic_forvia_v1,模拟员工06,answer,question,2,1,0,0,9,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000010,S10,ECU测试助手：通过率上升却没有更可靠,synthetic_forvia_v1,模拟员工08,practice_share,retrospective,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000011,S11,补一个容易漏掉的负例,synthetic_forvia_v1,模拟员工09,social,question,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000012,S12,灯具视觉检查：合成缺陷能替代实拍吗？,synthetic_forvia_v1,模拟员工10,question,question,2,1,0,1,8,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000013,S13,先评估复核工作量,synthetic_forvia_v1,模拟员工04,social,answer,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000014,S14,清洁出行试验记录摘要：单位不能消失,synthetic_forvia_v1,模拟员工11,practice_share,practice_share,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000015,S15,百分比和绝对值分开,synthetic_forvia_v1,模拟员工02,social,answer,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000016,S16,售后知识助手的中英混合问题,synthetic_forvia_v1,模拟员工12,question,question,2,1,0,1,8,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000017,S17,Keep the fault code literal,synthetic_forvia_v1,模拟员工07,social,answer,2,2,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000018,S18,尝试了保留原词的输出,synthetic_forvia_v1,模拟员工12,social,answer,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000019,S19,供应商文件OCR：表格读对了，关联却错了,synthetic_forvia_v1,模拟员工03,practice_share,retrospective,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000020,S20,跨页记录需要拒绝猜测,synthetic_forvia_v1,模拟员工06,social,answer,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000021,S21,本地摘要模型：先试推理模式还是普通模式？,synthetic_forvia_v1,模拟员工09,question,question,2,1,0,1,9,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000022,S22,先测冷启动和峰值内存,synthetic_forvia_v1,模拟员工08,social,question,2,1,0,0,7,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000023,S23,模拟结果：更快不等于可以验收,synthetic_forvia_v1,模拟员工09,question,question,2,1,1,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000024,S24,生产排程助手怎样避免输出不可执行计划？,synthetic_forvia_v1,模拟员工05,question,question,2,1,0,1,8,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000025,S25,把可行性与优化程度分开,synthetic_forvia_v1,模拟员工11,social,question,2,1,0,1,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000026,S26,能耗分析：总用电下降不一定代表效率提升,synthetic_forvia_v1,模拟员工02,practice_share,practice_share,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000027,S27,先确认分母,synthetic_forvia_v1,模拟员工04,social,answer,2,1,0,1,4,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000028,S28,跨语言论坛摘要会不会丢掉‘尚未验证’？,synthetic_forvia_v1,模拟员工07,question,question,2,1,0,1,8,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000029,S29,给摘要增加状态字段,synthetic_forvia_v1,模拟员工12,answer,question,2,1,0,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000030,S30,长讨论串：关键限制藏在中间怎么办？,synthetic_forvia_v1,模拟员工06,practice_share,question,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000031,S31,建议连评分一起比较,synthetic_forvia_v1,模拟员工01,social,answer,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000032,S32,论坛评分不要把长文自动当高贡献,synthetic_forvia_v1,模拟员工08,practice_share,question,2,2,1,1,10,5,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000033,S33,评分理由也要核对原文,synthetic_forvia_v1,模拟员工03,question,question,2,1,0,0,6,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000034,S34,智能体评测阅读：让验收集更难被钻空子,synthetic_forvia_v1,模拟员工10,question,question,2,2,1,1,10,5,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000035,S35,已记录到验证清单,synthetic_forvia_v1,模拟员工05,social,social,0,0,0,0,4,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000036,S36,AI赋能制造的全面思考,synthetic_forvia_v1,模拟员工11,practice_share,practice_share,2,1,0,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000037,S37,一个我还没有验证的想法,synthetic_forvia_v1,模拟员工10,practice_share,question,2,1,0,0,9,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000038,S38,周末跑步打卡,synthetic_forvia_v1,模拟员工03,social,social,0,0,0,0,4,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000039,S39,用两个样例证明所有模型都可靠？,synthetic_forvia_v1,模拟员工09,practice_share,practice_share,2,1,1,1,10,4,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000040,S40,两个答对只说明这两个答对,synthetic_forvia_v1,模拟员工02,answer,answer,2,1,1,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000041,S41,重复素材测试：保留版本号,synthetic_forvia_v1,模拟员工04,practice_share,question,2,0,0,1,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000042,S42,重复素材测试：再次发布,synthetic_forvia_v1,模拟员工04,practice_share,question,2,0,0,0,0,0,0,PendingReview,True,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000043,S43,增加一个不同的验证点,synthetic_forvia_v1,模拟员工05,social,social,0,0,0,0,7,0,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000044,S44,评分输入中的指令干扰样例,synthetic_forvia_v1,模拟员工08,practice_share,practice_share,2,1,0,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000045,S45,只有链接的资料转发,synthetic_forvia_v1,模拟员工06,resource,resource,0,1,1,0,10,2,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000046,S46,SharePoint导出进入本地摘要：一条容易漏的规则,synthetic_forvia_v1,模拟员工12,practice_share,practice_share,2,1,0,1,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000047,S47,清洗后别把否定句删了,synthetic_forvia_v1,模拟员工01,answer,answer,2,1,0,0,9,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000048,S48,一句话改写也可能改变证据等级,synthetic_forvia_v1,模拟员工07,practice_share,practice_share,2,0,0,0,9,2,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000049,S49,同一实验主题的完成状态样例,synthetic_forvia_v1,模拟员工07,practice_share,practice_share,2,1,0,0,10,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分
+70000000001:5000000000050,S50,给AI培训设计一份失败案例作业,synthetic_forvia_v1,模拟员工11,question,question,2,1,0,0,8,3,0,PendingReview,False,True,alpha切点来自探索样例，未经真实双人标注定标；仅供试评分

@@ -62,16 +62,16 @@ class ThreadContext:
 
 
 def build_contexts(messages: list[Message]) -> dict[str, ThreadContext]:
-    by_key = {m.message_key: m for m in messages}
+    by_id = {(m.row.get("NetworkId", ""), m.row["MessageId"]): m for m in messages}
     by_thread: dict[str, list[Message]] = {}
     for m in messages:
-        by_thread.setdefault(m.thread_id, []).append(m)
+        by_thread.setdefault((m.row.get("NetworkId", ""), m.thread_id), []).append(m)
 
     ctxs = {}
     for m in messages:
-        thread = by_thread[m.thread_id]
+        thread = by_thread[(m.row.get("NetworkId", ""), m.thread_id)]
         starter = next((x for x in thread if x.row["IsRootPost"] == "True"), thread[0])
-        parent = by_key.get(m.row["ReplyToId"]) if m.row.get("ReplyToId") else None
+        parent = by_id.get((m.row.get("NetworkId", ""), m.row["ReplyToId"])) if m.row.get("ReplyToId") else None
         if parent is None and starter is not None and starter.message_key != m.message_key:
             parent = starter
         others = [x for x in thread if x.message_key != m.message_key and
@@ -133,6 +133,9 @@ def summarize(message: Message, ctx: ThreadContext) -> dict:
         ranked = sorted(zip((sim + pos_boost).tolist(), sents), key=lambda x: -x[0])
 
     top = [s for _, s in ranked[: min(3, len(ranked))]]
+    # Preserve qualifications independently of the three selected topic sentences.
+    limitation_spans = [s for s in sents if re.search(
+        r'尚未|暂不能|不能|不足|不一定|未验证|没有效果|虚构|模拟|not yet|not evidence', s, re.I)]
     if not message.row.get("IsRootPost") == "True" and ctx.parent is not None:
         # 回复：摘要里注明所回应的主题，避免脱离上下文误读
         parent_topic = (_sentences(ctx.parent.text) or [""])[0][:60]
@@ -148,6 +151,7 @@ def summarize(message: Message, ctx: ThreadContext) -> dict:
         "summary": summary[:200],
         "intent": intent,
         "key_points": [s[:100] for s in top],
+        "limitations": limitation_spans,
         "actionable_advice": [s[:100] for s in top if ANSWER_HINT_RE.search(s)][:2],
         "evidence_spans": [{"quote": s[:80], "reason": "TF-IDF 主题句"} for s in top],
         "uncertainties": warnings or [],
@@ -300,15 +304,24 @@ def quality_gate(message: Message, summary: dict, evaluation: dict) -> list[str]
         quote = span.get("quote", "").replace("…", "")
         if quote and quote not in normalized:
             failures.append(f"EVIDENCE_NOT_FOUND:{quote[:30]}")
+    for quote in summary.get('limitations', []):
+        if quote not in normalized:
+            failures.append('LIMITATION_NOT_FOUND')
+    for dimension in DIMENSION_NAMES:
+        value = evaluation.get('dimensions', {}).get(dimension, {}).get('level')
+        if type(value) is not int or not 0 <= value <= 3:
+            failures.append('INVALID_DIMENSION:' + dimension)
     return failures
 
 
-def run_pipeline(rows: list[dict], evaluate=None) -> list[dict]:
+def run_pipeline(rows: list[dict], evaluate=None, review_hold=False) -> list[dict]:
     """端到端：预处理 → 上下文 → 摘要 → 评分 → 积分 → 质量门禁。
 
     evaluate(message, summary, ctx) 是评分后端的可替换接口（规则/ML/LLM 同签名）。
     """
     messages = []
+    if len({r['MessageKey'] for r in rows}) != len(rows):
+        raise ValueError('Duplicate MessageKey in input; reconcile snapshots before scoring')
     for row in rows:
         art = preprocess_message(row["MessageKey"], row.get("ContentText", ""),
                                  row.get("LanguageCode") or None)
@@ -330,14 +343,28 @@ def run_pipeline(rows: list[dict], evaluate=None) -> list[dict]:
         evaluation["_sender_id"] = m.row["SenderId"]
         gate = quality_gate(m, summary, evaluation)
         points = calculate_points(evaluation, hash_counts)
+        if evaluation.get('score_model_version') == 'quantile-scorecard-0.2-alpha':
+            # Equal dimension weights; no type bonus to prevent systematic cap saturation.
+            candidate = int(points['dimension_total'] * 10 / 12 + .5)
+            points['raw_points'] = candidate
+            points['points'] = 0 if points['duplicate_flag'] else candidate
+            points['rules_version'] = 'scoring-rules-0.2-alpha'
+        points['candidate_points'] = points['points']
+        points['scoring_status'] = 'Draft'
+        if review_hold and evaluation.get('needs_human_review'):
+            points['points'] = 0
+            points['scoring_status'] = 'PendingReview'
         if gate:
             points["points"] = 0
             points["gate_failures"] = gate
+            points['scoring_status'] = 'PendingReview'
         results.append({
             "message_key": m.message_key,
             "sender": m.row["SenderName"],
             "is_root": m.row["IsRootPost"] == "True",
             "posted_at": m.row["PostedAt"],
+            "data_origin": m.row.get('DataOrigin', 'unspecified'),
+            "is_synthetic": m.row.get('IsSynthetic', 'unknown'),
             "preprocess": m.artifact,
             "summary": summary,
             "evaluation": evaluation,
