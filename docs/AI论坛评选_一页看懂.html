@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>论坛优秀帖子评选 · AI 评分方案一页看懂</title>
+<style>
+  :root{
+    color-scheme: light;
+    --surface-1:#fcfcfb; --page:#f9f9f7;
+    --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --s1:#2a78d6; --s2:#eb6834; --neg:#e34948;
+    --good:#0ca30c; --good-text:#006300; --warn:#fab219; --warn-deep:#8a6100;
+    --neutral-fill:#f0efec;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--page); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+    font-size:14px; line-height:1.65;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:32px 20px 64px}
+  header.top{padding:8px 4px 0}
+  .kicker{font-size:12px; letter-spacing:.08em; color:var(--ink-3); text-transform:uppercase}
+  h1{font-size:26px; line-height:1.35; margin:6px 0 4px; font-weight:700}
+  .subtitle{color:var(--ink-2); margin:0 0 20px}
+  section{margin-top:36px}
+  h2{font-size:18px; font-weight:700; margin:0 0 4px; display:flex; align-items:center; gap:10px}
+  h2 .no{font-size:12px; font-weight:700; color:var(--s1); border:1px solid var(--border);
+    border-radius:999px; padding:2px 10px; background:var(--surface-1); letter-spacing:.05em}
+  .lede{color:var(--ink-2); margin:0 0 16px}
+  .card{background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin:0 0 14px}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+
+  /* TL;DR */
+  .tldr{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px}
+  @media (max-width:760px){.tldr{grid-template-columns:1fr}}
+  .tldr .card{margin:0}
+  .tldr b{display:block; font-size:13px; color:var(--s1); margin-bottom:4px}
+  .tldr p{margin:0; color:var(--ink-2)}
+  .tldr strong{color:var(--ink)}
+
+  /* flow */
+  .flow{position:relative; padding-left:14px}
+  .step{position:relative; display:grid; grid-template-columns:44px 1fr auto; gap:14px; align-items:start;
+    padding:12px 0 12px; border-bottom:1px solid var(--grid)}
+  .step:last-child{border-bottom:none}
+  .step .n{width:32px; height:32px; border-radius:50%; background:var(--s1); color:#fff;
+    font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:center; margin-top:2px}
+  .step h3{margin:0 0 2px; font-size:15px; font-weight:650}
+  .step p{margin:0; color:var(--ink-2); font-size:13px}
+  .step .tool{display:inline-block; margin-top:6px; font-size:11.5px; color:var(--ink-3);
+    border:1px solid var(--grid); border-radius:6px; padding:1px 8px; background:#fff}
+  .badge{white-space:nowrap; display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600;
+    border-radius:999px; padding:3px 10px; margin-top:6px; border:1px solid var(--border)}
+  .badge .sw{width:8px; height:8px; border-radius:50%; flex:none}
+  .b-good{background:rgba(12,163,12,.08)}   .b-good .sw{background:var(--good)}
+  .b-neutral{background:#fff}               .b-neutral .sw{background:var(--axis)}
+  .b-warn{background:rgba(250,178,25,.12)}  .b-warn .sw{background:var(--warn)}
+
+  /* metric cards */
+  .mcard h3{margin:0 0 2px; font-size:15px}
+  .mcard .q{color:var(--ink-3); font-size:12.5px; margin:0 0 10px}
+  .mcard ul{margin:0; padding:0; list-style:none}
+  .mcard li{padding:5px 0; border-top:1px solid var(--grid); font-size:13px; color:var(--ink-2);
+    display:flex; justify-content:space-between; gap:10px}
+  .mcard li b{color:var(--ink); font-weight:600; white-space:nowrap}
+  .foot-note{font-size:12.5px; color:var(--ink-3); margin:10px 2px 0}
+
+  /* receipt cards */
+  .post-meta{font-size:12px; color:var(--ink-3); margin:2px 0 8px}
+  blockquote{margin:0 0 12px; padding:8px 12px; background:var(--neutral-fill); border-radius:8px;
+    font-size:12.5px; color:var(--ink-2)}
+  .dim{display:grid; grid-template-columns:76px 64px 1fr; gap:10px; align-items:center;
+    padding:6px 0; border-top:1px solid var(--grid); font-size:12.5px}
+  .dim .dn{font-weight:600}
+  .dim .why{color:var(--ink-3)}
+  .dots{display:inline-flex; gap:4px; align-items:center}
+  .dot{width:11px; height:11px; border-radius:50%; background:var(--s1); display:inline-block}
+  .dot.off{background:transparent; border:1.5px solid var(--axis)}
+  .total{margin-top:10px; padding-top:10px; border-top:2px solid var(--ink);
+    font-size:14px; font-weight:700; text-align:right}
+  .total small{font-weight:500; color:var(--ink-3)}
+  .zero-note{font-size:13px; color:var(--ink-2); padding:10px 0 2px}
+
+  /* equation + chips */
+  .equation{font-size:15px; background:var(--neutral-fill); border-radius:8px; padding:10px 14px; margin:0 0 10px}
+  .equation b{color:var(--s1)}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 4px}
+  .chip{font-size:12.5px; border:1px solid var(--grid); background:#fff; border-radius:999px; padding:3px 10px; color:var(--ink-2)}
+  .chip b{font-weight:700}
+  .chip .up{color:var(--good-text)} .chip .dn{color:#d03b3b}
+
+  /* charts */
+  .chartbox svg{width:100%; height:auto; display:block}
+  .legend{display:flex; flex-wrap:wrap; gap:18px; font-size:12.5px; color:var(--ink-2); margin:0 0 8px}
+  .legend .sw{width:12px; height:12px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:-1px}
+  .rowhit{fill:transparent; cursor:default}
+  .rowhit:hover{fill:rgba(11,11,11,0.035)}
+  .ticktxt{font:11px system-ui,sans-serif; fill:var(--ink-3)}
+  .vallab{font:600 12px system-ui,sans-serif; fill:var(--ink-2)}
+  .rowname{font:600 13px "Segoe UI","Microsoft YaHei",sans-serif; fill:var(--ink)}
+  .rowtype{font:11px system-ui,sans-serif; fill:var(--ink-3)}
+  .reslab{font:700 14px system-ui,sans-serif; fill:var(--ink)}
+
+  /* takeaways */
+  .take{display:grid; grid-template-columns:28px 1fr; gap:10px; padding:8px 0; border-top:1px solid var(--grid); font-size:13.5px; color:var(--ink-2)}
+  .take:first-of-type{border-top:none}
+  .take .k{width:24px; height:24px; border-radius:50%; background:var(--neutral-fill); color:var(--ink);
+    font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; margin-top:1px}
+  .take strong{color:var(--ink)}
+
+  /* kpi */
+  .kpis{display:grid; grid-template-columns:repeat(5,1fr); gap:14px}
+  @media (max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:16px 16px 14px; text-align:left}
+  .kpi .v{font-size:28px; font-weight:650; line-height:1.1}
+  .kpi .v small{font-size:15px; font-weight:600; color:var(--ink-2)}
+  .kpi .l{font-size:12.5px; color:var(--ink-3); margin-top:6px}
+
+  .honest{border-left:3px solid var(--warn); }
+  .honest h3{margin:0 0 6px; font-size:14px}
+  .honest p{margin:0 0 10px; font-size:13px; color:var(--ink-2)}
+  .mae{display:grid; grid-template-columns:110px 1fr 56px; gap:10px; align-items:center; font-size:12.5px; color:var(--ink-2); padding:3px 0}
+
+  /* anti-cheat */
+  .ac h3{margin:0 0 4px; font-size:14px}
+  .ac p{margin:0; font-size:13px; color:var(--ink-2)}
+  .ac .sc{font-size:12px; color:var(--ink-3); margin-top:8px; border-top:1px dashed var(--grid); padding-top:8px}
+
+  /* next steps */
+  .next{display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+  @media (max-width:860px){.next{grid-template-columns:1fr}}
+  .next .card{margin:0; padding:14px 14px}
+  .next .k{font-size:11px; font-weight:700; color:var(--s1); letter-spacing:.06em}
+  .next h3{margin:4px 0 4px; font-size:13.5px}
+  .next p{margin:0; font-size:12.5px; color:var(--ink-2)}
+
+  /* table twin */
+  details.tbl{margin-top:8px}
+  details.tbl summary{cursor:pointer; color:var(--ink-3); font-size:12.5px; padding:4px 2px}
+  table{border-collapse:collapse; width:100%; font-size:12.5px; margin-top:8px}
+  th,td{text-align:left; padding:6px 10px; border-bottom:1px solid var(--grid)}
+  th{color:var(--ink-3); font-weight:600; border-bottom:1px solid var(--axis)}
+  td.n{font-variant-numeric:tabular-nums; text-align:right}
+
+  #tip{position:fixed; z-index:9; max-width:320px; background:#0b0b0b; color:#fff; font-size:12.5px;
+    border-radius:8px; padding:8px 12px; opacity:0; pointer-events:none; transition:opacity .12s; line-height:1.5}
+  footer{margin-top:44px; color:var(--ink-3); font-size:12px; border-top:1px solid var(--grid); padding-top:12px}
+
+  @media print{
+    body{background:#fff} .wrap{max-width:none; padding:0 8mm}
+    #tip{display:none}
+    .card,.kpi,.step{break-inside:avoid}
+    section{break-inside:auto}
+    section+section{break-before:auto}
+    h2{break-after:avoid}
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">可行性阶段汇报 · 2026-09 · 给非技术读者</div>
+  <h1>论坛优秀帖子评选：AI 自动打分，一页看懂</h1>
+  <p class="subtitle">社区「Fight for Agentic」年终评选 · 它做什么、准不准、花多少钱、下一步干什么</p>
+</header>
+
+<!-- ================= 01 TLDR ================= -->
+<section>
+  <div class="tldr">
+    <div class="card"><b>做什么</b><p>AI 给论坛每条帖子<strong>打 0–10 分</strong>，把真正有价值的分享选出来，<strong>人做最终决定</strong>。</p></div>
+    <div class="card"><b>靠谱吗</b><p>实测 62 条：<strong>好帖排前、灌水垫底</strong>，顺序全对；每个分数都能拆出理由，不是黑箱。</p></div>
+    <div class="card"><b>花多少钱</b><p><strong>0 元</strong>。不用买服务器、不用买大模型服务，一台办公电脑就够，模型只有一个照片十分之一大。</p></div>
+  </div>
+</section>
+
+<!-- ================= 02 FLOW ================= -->
+<section>
+  <h2><span class="no">01</span>整件事的全流程：七步</h2>
+  <p class="lede">从“帖子发在论坛上”到“排行榜上榜”，中间发生的事——每一步都标了当前进度。</p>
+  <div class="card flow">
+    <div class="step">
+      <div class="n">1</div>
+      <div>
+        <h3>每天自动收集帖子</h3>
+        <p>每天早上 8 点自动读取社区全部主帖和回复：新帖建档、老帖刷新、删帖不删档；每次运行留一条日志，漏抓了会有标记。</p>
+        <span class="tool">Power Automate 云端流（零代码、零服务器）</span>
+      </div>
+      <span class="badge b-neutral"><span class="sw"></span>方案就绪，待试点启用</span>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <div>
+        <h3>导出一份数据快照</h3>
+        <p>像“导出 Excel”一样人工点一下，把帖子列表存成一个文件；本地程序只读这份文件，绝不回头重爬论坛。</p>
+        <span class="tool">SharePoint 自带导出（人工操作）</span>
+      </div>
+      <span class="badge b-good"><span class="sw"></span>已跑通</span>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <div>
+        <h3>文字清洗</h3>
+        <p>五步固定清洗：统一编码、统一换行、去乱码、还原符号、压缩空格。原始帖子永远不改，清洗只产生副本，随时可回溯。</p>
+        <span class="tool">纯 Python 标准库（无第三方依赖）</span>
+      </div>
+      <span class="badge b-good"><span class="sw"></span>已验证</span>
+    </div>
+    <div class="step">
+      <div class="n">4</div>
+      <div>
+        <h3>AI 打分</h3>
+        <p>把正文切成两三个字的小片段，从例子里学“哪些片段值分”；一条帖子几毫秒出分，分数可拆成“起步分 + 片段加减”。</p>
+        <span class="tool">scikit-learn · 办公电脑 CPU · 13 项自动测试全过</span>
+      </div>
+      <span class="badge b-good"><span class="sw"></span>已验证</span>
+    </div>
+    <div class="step">
+      <div class="n">5</div>
+      <div>
+        <h3>出结果</h3>
+        <p>每条帖子得到：分数 + 加减分片段清单 + 验证状态；另附一份人能逐条读的说明文档，给复核者看。</p>
+        <span class="tool">模型文件 + 分数表 + 运行报告</span>
+      </div>
+      <span class="badge b-good"><span class="sw"></span>已验证</span>
+    </div>
+    <div class="step">
+      <div class="n">6</div>
+      <div>
+        <h3>人工复核（人说了算）</h3>
+        <p>分数只当参考：人看原文定最终积分，谁复核、何时、为什么全部留痕；发帖后修改会重新评，旧版本自动失效。</p>
+        <span class="tool">SharePoint 列表（试点阶段免开发界面）</span>
+      </div>
+      <span class="badge b-warn"><span class="sw"></span>当前最大缺口：设计已定，代码未接</span>
+    </div>
+    <div class="step">
+      <div class="n">7</div>
+      <div>
+        <h3>汇总上排行榜</h3>
+        <p>只统计“已批准”的积分，自动按周 / 月 / 年汇总排名、算出名次变化，页面只读结果表，展示周榜月榜年榜。</p>
+        <span class="tool">本地汇总函数（已测试）→ SharePoint → Power Apps 页面</span>
+      </div>
+      <span class="badge b-warn"><span class="sw"></span>一半完成：汇总已实现，写回与页面待联调</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 RULE CARD ================= -->
+<section>
+  <h2><span class="no">02</span>打分第一层：一张评分卡</h2>
+  <p class="lede">先有一张人定的评分卡：四个维度、10 个指标，<strong>全部由机器自动数</strong>，不需要人填。中英文混排都能处理。</p>
+  <div class="grid2">
+    <div class="card mcard">
+      <h3>① 价值</h3>
+      <p class="q">写没写实质内容</p>
+      <ul>
+        <li><span>字符数</span><b>M1</b></li>
+        <li><span>段落数（有没有分段）</span><b>M2</b></li>
+        <li><span>每段字符数（信息密度）</span><b>M3</b></li>
+      </ul>
+    </div>
+    <div class="card mcard">
+      <h3>② 证据</h3>
+      <p class="q">有没有给证据</p>
+      <ul>
+        <li><span>代码块数</span><b>M4</b></li>
+        <li><span>链接数（有没有给来源）</span><b>M5</b></li>
+        <li><span>每 100 字里的数字个数</span><b>M6</b></li>
+      </ul>
+    </div>
+    <div class="card mcard">
+      <h3>③ 讨论影响</h3>
+      <p class="q">有没有动手、带没带动讨论</p>
+      <ul>
+        <li><span>步骤词数（“首先 / 然后 / 验证 / 过滤”这类操作词）</span><b>M7</b></li>
+        <li><span>这条讨论串带动了多少人跟帖</span><b>M9</b></li>
+      </ul>
+    </div>
+    <div class="card mcard">
+      <h3>④ 相关性</h3>
+      <p class="q">是不是工作相关</p>
+      <ul>
+        <li><span>命中“AI / 模型 / 检索 / ECU / 测试”等工作主题词</span><b>主题词命中</b></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-note">另有 M8 问句数、M10 意图词两项：只用来判断帖子类型（提问 / 回答 / 分享 / 寒暄），不直接计分。</p>
+</section>
+
+<!-- ================= 04 RECEIPTS ================= -->
+<section>
+  <h2><span class="no">03</span>评分卡打出来的三张“小票”</h2>
+  <p class="lede">每个维度评 0–2 级，四维合计 × 10⁄12 就是分数。看三个真实样例：</p>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin:0 0 2px;font-size:15px">S02 · 干货回复</h3>
+      <div class="post-meta">模拟员工02 · 09:02 · 回复帖</div>
+      <blockquote>“先按车型、工厂、生效日期过滤；缺一项就追问。检索只在有效版本中进行，答案同时返回版本号和原文段落。”</blockquote>
+      <div class="dim"><span class="dn">价值</span><span class="dots"><span class="dot"></span><span class="dot off"></span></span><span class="why">49 字较短，但含“过滤 / 追问”操作动词 → 保底 1 级</span></div>
+      <div class="dim"><span class="dn">证据</span><span class="dots"><span class="dot off"></span><span class="dot off"></span></span><span class="why">无链接、无数字</span></div>
+      <div class="dim"><span class="dn">讨论影响</span><span class="dots"><span class="dot"></span><span class="dot off"></span></span><span class="why">有步骤词；本串暂无回复</span></div>
+      <div class="dim"><span class="dn">相关性</span><span class="dots"><span class="dot"></span><span class="dot"></span></span><span class="why">命中“检索 / 版本”，认真回答</span></div>
+      <div class="total">合计 4 × 10⁄12 <small>＝</small> 3.33 分</div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 2px;font-size:15px">S07 · 论文分享</h3>
+      <div class="post-meta">模拟员工06 · 09:07 · 主帖 · 185 字 · 2 个链接</div>
+      <blockquote>“分享一篇 2026 年的汽车制造需求工程 RAG 预印本……建议先测版本冲突和引用定位；论文性能数字不能直接作为本地验收值。”</blockquote>
+      <div class="dim"><span class="dn">价值</span><span class="dots"><span class="dot"></span><span class="dot off"></span></span><span class="why">字数达 3 级，但通篇“建议读”、无操作动词 → 封顶 1 级（长 ≠ 高分）</span></div>
+      <div class="dim"><span class="dn">证据</span><span class="dots"><span class="dot"></span><span class="dot off"></span></span><span class="why">2 个链接、数字密度 0.54</span></div>
+      <div class="dim"><span class="dn">讨论影响</span><span class="dots"><span class="dot"></span><span class="dot"></span></span><span class="why">有步骤词、带动 2 条回复</span></div>
+      <div class="dim"><span class="dn">相关性</span><span class="dots"><span class="dot"></span><span class="dot"></span></span><span class="why">命中主题</span></div>
+      <div class="total">合计 6 × 10⁄12 <small>＝</small> 5.0 分 <small>（全场最高档）</small></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3 style="margin:0 0 2px;font-size:15px">S04 · 纯寒暄</h3>
+    <div class="post-meta">模拟员工03 · 09:04 · 回复帖</div>
+    <blockquote>“这个版本过滤思路很清楚，感谢两位分享，先收藏了！”</blockquote>
+    <p class="zero-note">→ 识别为<strong>寒暄类</strong>：四个维度直接全部归零，一个指标都不用算，<strong>0 分</strong>。</p>
+  </div>
+</section>
+
+<!-- ================= 05 MODEL ================= -->
+<section>
+  <h2><span class="no">04</span>打分第二层：AI 从例子里“学会打分”</h2>
+  <p class="lede">算法一句话：把每条帖子切成两三个字的小片段，<strong>像老编辑盯关键词</strong>——从 62 条「正文 → 参考分」例子里学出一张片段加减速查表，再给任何新帖子“算账”。不用分词、不用词库、不用下载大模型。</p>
+  <div class="card chartbox">
+    <div class="equation">模型分 ＝ 起步分 <b>2.557</b>（全体平均水位）＋ 片段加分 − 片段减分</div>
+    <div class="chips">
+      <span class="chip">“进行” <b class="up">+0.019</b></span>
+      <span class="chip">“日期” <b class="up">+0.016</b></span>
+      <span class="chip">“答案” <b class="up">+0.016</b></span>
+      <span class="chip">“版本” <b class="dn">−0.018</b></span>
+      <span class="chip">“过滤” <b class="dn">−0.012</b></span>
+      <span class="chip">“周末” <b class="dn">−1.410</b>（全网最强减分项）</span>
+    </div>
+    <p class="foot-note" style="margin:4px 2px 14px">下面是四条帖子实际“算账”的结果：起点都是 2.557，好帖子被片段往上拉，灌水帖被往下压。</p>
+    <div class="legend">
+      <span><span class="sw" style="background:var(--s1)"></span>片段净加分</span>
+      <span><span class="sw" style="background:var(--neg)"></span>片段净减分</span>
+      <span><span class="sw" style="background:var(--axis);height:3px;border-radius:1px"></span>起步分 2.557</span>
+    </div>
+    <svg viewBox="0 0 720 268" role="img" aria-label="四条帖子的片段净加减分与模型分">
+      <line x1="430" y1="8" x2="430" y2="230" stroke="#c3c2b7" stroke-width="1"/>
+      <text x="430" y="250" text-anchor="middle" class="ticktxt">起步分 2.557（全体平均水位）</text>
+      <text x="215" y="37" text-anchor="end" class="rowname">S07 · 论文分享</text>
+      <path d="M430,22 h136 a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4 h-136 z" fill="#2a78d6"/>
+      <text x="577" y="37" class="vallab">+1.17</text>
+      <text x="628" y="37" class="reslab">3.73 分</text>
+      <text x="215" y="93" text-anchor="end" class="rowname">S02 · 版本过滤回复</text>
+      <path d="M430,78 h42 a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4 h-42 z" fill="#2a78d6"/>
+      <text x="483" y="93" class="vallab">+0.39</text>
+      <text x="628" y="93" class="reslab">2.94 分</text>
+      <text x="215" y="149" text-anchor="end" class="rowname">S04 ·“感谢收藏”</text>
+      <path d="M430,134 h-144 a4,4 0 0 0 -4,4 v12 a4,4 0 0 0 4,4 h144 z" fill="#e34948"/>
+      <text x="275" y="149" text-anchor="end" class="vallab">−1.23</text>
+      <text x="628" y="149" class="reslab">1.32 分</text>
+      <text x="215" y="205" text-anchor="end" class="rowname">S35 ·“周末看看”</text>
+      <path d="M430,190 h-165 a4,4 0 0 0 -4,4 v12 a4,4 0 0 0 4,4 h165 z" fill="#e34948"/>
+      <text x="254" y="205" text-anchor="end" class="vallab">−1.41</text>
+      <text x="628" y="205" class="reslab">1.15 分</text>
+      <rect class="rowhit" x="0" y="10" width="720" height="44" tabindex="0" data-tip="S07 论文分享（185 字 · 2 链接）：片段净加分 +1.17 → 模型分 3.73"/>
+      <rect class="rowhit" x="0" y="66" width="720" height="44" tabindex="0" data-tip="S02 版本过滤回复：片段净加分 +0.39 → 模型分 2.94"/>
+      <rect class="rowhit" x="0" y="122" width="720" height="44" tabindex="0" data-tip="S04“感谢两位分享，先收藏了”：片段净减分 −1.23 → 模型分 1.32"/>
+      <rect class="rowhit" x="0" y="178" width="720" height="44" tabindex="0" data-tip="S35“周末看看”：光“周末”一词就 −1.41 → 模型分 1.15（全场最低）"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= 06 RESULTS ================= -->
+<section>
+  <h2><span class="no">05</span>实测成绩：AI 打分准吗？</h2>
+  <p class="lede">62 条帖子，每条都有“设计参考分”（按上面评分卡人工定的）和“模型打分”（AI 自己算的）。两相对比：</p>
+  <div class="card chartbox">
+    <div class="legend">
+      <span><span class="sw" style="background:var(--s1)"></span>设计参考分（评分卡定的）</span>
+      <span><span class="sw" style="background:var(--s2)"></span>模型打分（AI 算的）</span>
+    </div>
+    <svg viewBox="0 0 720 412" role="img" aria-label="六条代表性帖子的设计参考分与模型打分对比">
+      <g stroke="#e1e0d9" stroke-width="1">
+        <line x1="290" y1="12" x2="290" y2="384"/><line x1="390" y1="12" x2="390" y2="384"/>
+        <line x1="490" y1="12" x2="490" y2="384"/><line x1="590" y1="12" x2="590" y2="384"/>
+        <line x1="690" y1="12" x2="690" y2="384"/>
+      </g>
+      <line x1="190" y1="12" x2="190" y2="384" stroke="#c3c2b7" stroke-width="1"/>
+      <g class="ticktxt" text-anchor="middle">
+        <text x="190" y="404">0</text><text x="290" y="404">1</text><text x="390" y="404">2</text>
+        <text x="490" y="404">3</text><text x="590" y="404">4</text><text x="690" y="404">5</text>
+      </g>
+      <text x="690" y="410" text-anchor="end" class="ticktxt" opacity="0">.</text>
+
+      <text x="180" y="34" text-anchor="end" class="rowname">S32 · RAG 论文分享</text>
+      <text x="180" y="51" text-anchor="end" class="rowtype">资源分享</text>
+      <path d="M190,22 h496 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-496 z" fill="#2a78d6"/>
+      <text x="697" y="34" class="vallab">5.0</text>
+      <path d="M190,44 h386 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-386 z" fill="#eb6834"/>
+      <text x="587" y="56" class="vallab">3.9</text>
+
+      <text x="180" y="98" text-anchor="end" class="rowname">S34 · 软件评测方案</text>
+      <text x="180" y="115" text-anchor="end" class="rowtype">资源分享</text>
+      <path d="M190,86 h496 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-496 z" fill="#2a78d6"/>
+      <text x="697" y="98" class="vallab">5.0</text>
+      <path d="M190,108 h376 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-376 z" fill="#eb6834"/>
+      <text x="577" y="120" class="vallab">3.8</text>
+
+      <text x="180" y="162" text-anchor="end" class="rowname">S02 · 版本过滤方法</text>
+      <text x="180" y="179" text-anchor="end" class="rowtype">干货回复</text>
+      <path d="M190,150 h326 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-326 z" fill="#2a78d6"/>
+      <text x="527" y="162" class="vallab">3.3</text>
+      <path d="M190,172 h286 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-286 z" fill="#eb6834"/>
+      <text x="487" y="184" class="vallab">2.9</text>
+
+      <text x="180" y="226" text-anchor="end" class="rowname">S05 · 外观检测复盘</text>
+      <text x="180" y="243" text-anchor="end" class="rowtype">实践总结</text>
+      <path d="M190,214 h326 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-326 z" fill="#2a78d6"/>
+      <text x="527" y="226" class="vallab">3.3</text>
+      <path d="M190,236 h306 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-306 z" fill="#eb6834"/>
+      <text x="507" y="248" class="vallab">3.1</text>
+
+      <text x="180" y="290" text-anchor="end" class="rowname">S04 ·“感谢分享先收藏”</text>
+      <text x="180" y="307" text-anchor="end" class="rowtype">纯寒暄</text>
+      <text x="197" y="290" class="vallab">0</text>
+      <path d="M190,300 h126 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-126 z" fill="#eb6834"/>
+      <text x="327" y="312" class="vallab">1.3</text>
+
+      <text x="180" y="354" text-anchor="end" class="rowname">S35 ·“周末看看”</text>
+      <text x="180" y="371" text-anchor="end" class="rowtype">闲聊</text>
+      <text x="197" y="354" class="vallab">0</text>
+      <path d="M190,364 h106 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-106 z" fill="#eb6834"/>
+      <text x="307" y="376" class="vallab">1.1</text>
+
+      <rect class="rowhit" x="0" y="16" width="720" height="50" tabindex="0" data-tip="S32 RAG 论文分享（资源分享）：设计参考 5.0 · 模型 3.9"/>
+      <rect class="rowhit" x="0" y="80" width="720" height="50" tabindex="0" data-tip="S34 软件评测方案（资源分享）：设计参考 5.0 · 模型 3.8"/>
+      <rect class="rowhit" x="0" y="144" width="720" height="50" tabindex="0" data-tip="S02 版本过滤方法（干货回复）：设计参考 3.3 · 模型 2.9"/>
+      <rect class="rowhit" x="0" y="208" width="720" height="50" tabindex="0" data-tip="S05 外观检测复盘（实践总结）：设计参考 3.3 · 模型 3.1"/>
+      <rect class="rowhit" x="0" y="272" width="720" height="50" tabindex="0" data-tip="S04“感谢分享先收藏”（纯寒暄）：设计参考 0 · 模型 1.3"/>
+      <rect class="rowhit" x="0" y="336" width="720" height="50" tabindex="0" data-tip="S35“周末看看”（闲聊）：设计参考 0 · 模型 1.1（全场最低）"/>
+    </svg>
+    <div class="take" style="margin-top:12px">
+      <span class="k">1</span><span><strong>排序是对的。</strong>设计分最高的 3 条（论文 / 评测分享），模型打分恰好也是全场前 3；所有寒暄闲聊全部被压到最低档——<strong>干货和灌水分得开</strong>。</span>
+    </div>
+    <div class="take">
+      <span class="k">2</span><span><strong>每个分数都有理由。</strong>比如“周末”一个词就贡献了 −1.4 分，S02 的加分片段是“日期、答案、进行”。员工来问“我为什么得这个分”，答得出来。</span>
+    </div>
+    <div class="take">
+      <span class="k">3</span><span><strong>分数不单独定生死。</strong>所有模型分状态一律是“实验性”，最终积分必须经人工复核确认。</span>
+    </div>
+    <details class="tbl">
+      <summary>查看本图数据表</summary>
+      <table>
+        <thead><tr><th>帖子</th><th>类型</th><th style="text-align:right">设计参考分</th><th style="text-align:right">模型打分</th></tr></thead>
+        <tbody>
+          <tr><td>S32 RAG 论文分享</td><td>资源分享</td><td class="n">5.0</td><td class="n">3.9</td></tr>
+          <tr><td>S34 软件评测方案</td><td>资源分享</td><td class="n">5.0</td><td class="n">3.8</td></tr>
+          <tr><td>S02 版本过滤方法</td><td>干货回复</td><td class="n">3.3</td><td class="n">2.9</td></tr>
+          <tr><td>S05 外观检测复盘</td><td>实践总结</td><td class="n">3.3</td><td class="n">3.1</td></tr>
+          <tr><td>S04“感谢分享先收藏”</td><td>纯寒暄</td><td class="n">0</td><td class="n">1.3</td></tr>
+          <tr><td>S35“周末看看”</td><td>闲聊</td><td class="n">0</td><td class="n">1.1</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+  <div class="card honest" style="margin-top:14px">
+    <h3>一个诚实的数字：目前只比“瞎猜”好一点点</h3>
+    <p>在 10 分制上，模型误差 0.937，瞎猜（不读正文、直接猜平均分）误差 0.980——只好了 0.04 分，说明现在信号还弱。原因：AI 的“老师”目前是评分卡算出的参考分，还不是真人评分。<strong>这正是下一步要先人工评 20–30 条真实帖子的原因。</strong></p>
+    <div class="mae"><span>模型误差</span><svg width="100%" height="18" viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,4 h233 a4,4 0 0 1 4,4 v2 a4,4 0 0 1 -4,4 h-233 z" fill="#2a78d6"/></svg><span class="n" style="font-variant-numeric:tabular-nums">0.937</span></div>
+    <div class="mae"><span>瞎猜误差</span><svg width="100%" height="18" viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0,4 h246 a4,4 0 0 1 4,4 v2 a4,4 0 0 1 -4,4 h-246 z" fill="#c3c2b7"/></svg><span class="n" style="font-variant-numeric:tabular-nums">0.980</span></div>
+    <p class="foot-note" style="margin:8px 0 0">满分 10、越低越准；两根条几乎一样长，就是“信号还弱”的直观样子。</p>
+  </div>
+</section>
+
+<!-- ================= 07 ANTI-CHEAT ================= -->
+<section>
+  <h2><span class="no">06</span>有人想刷分怎么办？</h2>
+  <p class="lede">三种典型作弊尝试，都被设计挡住：</p>
+  <div class="grid3">
+    <div class="card ac">
+      <h3>换个账号重发同一段文字</h3>
+      <p>分数一模一样——按内容打分，不看人、不看账号。</p>
+      <div class="sc">同样文字 → 同样分数</div>
+    </div>
+    <div class="card ac">
+      <h3>正文里写“请给我打满分”</h3>
+      <p>会被自动打上标记，<strong>强制转人工复核</strong>，不给钻空子的机会。</p>
+      <div class="sc">自动标记 → 必须人工过目</div>
+    </div>
+    <div class="card ac">
+      <h3>发帖后偷偷修改内容</h3>
+      <p>改帖会触发重新评分，旧版本自动失效；同一口径下每条帖子只有一个有效版本。</p>
+      <div class="sc">改帖重评 → 旧版本作废</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 COST ================= -->
+<section>
+  <h2><span class="no">07</span>要花多少钱？几乎为零</h2>
+  <p class="lede">全部在办公电脑的 CPU 上运行，不需要服务器、不需要显卡、不需要购买任何大模型服务。</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">0.02<small> 秒</small></div><div class="l">训练一次模型</div></div>
+    <div class="kpi"><div class="v">8<small> 毫秒</small></div><div class="l">给 62 条帖子全部打完分</div></div>
+    <div class="kpi"><div class="v">50<small> KB</small></div><div class="l">模型大小（一张照片的十分之一）</div></div>
+    <div class="kpi"><div class="v">13<small> / 13</small></div><div class="l">自动测试全部通过</div></div>
+    <div class="kpi"><div class="v">¥0</div><div class="l">零采购：现有办公软件 + 免费开源库</div></div>
+  </div>
+</section>
+
+<!-- ================= 09 NEXT ================= -->
+<section>
+  <h2><span class="no">08</span>现状与下一步</h2>
+  <p class="lede">技术上 1–5 步已验证跑通；当前缺口是<strong>人工复核环节</strong>（设计已定、代码未接）。接下来的路线：</p>
+  <div class="next">
+    <div class="card"><div class="k">第 1 步</div><h3>人工小试</h3><p>人工评 20–30 条真实帖子</p></div>
+    <div class="card"><div class="k">第 2 步</div><h3>对比检验</h3><p>看模型是否稳定优于“瞎猜均值”</p></div>
+    <div class="card"><div class="k">第 3 步</div><h3>双人定标</h3><p>积累 100–200 条，两人独立标注</p></div>
+    <div class="card"><div class="k">第 4 步</div><h3>接复核列表</h3><p>SharePoint 建表，人工确认积分</p></div>
+    <div class="card"><div class="k">第 5 步</div><h3>排行榜上线</h3><p>汇总写回 + Power Apps 页面展示</p></div>
+  </div>
+</section>
+
+<footer>
+  数据来源：62 条模拟样本 / 35 个独立讨论串 · 分组交叉验证（同帖不泄漏） · 13 项单元测试全过 · 详细技术版见仓库 docs/AITALENTSHOW_FEASIBILITY_REPORT.md
+</footer>
+
+</div>
+<div id="tip" class="no-print" role="tooltip"></div>
+<script>
+(function(){
+  var tip = document.getElementById('tip');
+  function show(el){
+    tip.textContent = el.getAttribute('data-tip');
+    tip.style.opacity = 1;
+  }
+  function move(e){
+    var x = e.clientX + 14, y = e.clientY + 16;
+    var r = tip.getBoundingClientRect();
+    if (x + r.width > window.innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y + r.height > window.innerHeight - 8) y = e.clientY - r.height - 12;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  document.addEventListener('mouseover', function(e){
+    var t = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if (t) show(t);
+  });
+  document.addEventListener('mousemove', function(e){
+    if (tip.style.opacity == 1) move(e);
+  });
+  document.addEventListener('mouseout', function(e){
+    if (e.target.closest && e.target.closest('[data-tip]')) tip.style.opacity = 0;
+  });
+  document.addEventListener('focusin', function(e){
+    if (e.target.getAttribute && e.target.getAttribute('data-tip')) show(e.target);
+  });
+  document.addEventListener('focusout', function(){ tip.style.opacity = 0; });
+})();
+</script>
+</body>
+</html>
